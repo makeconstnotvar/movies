@@ -1,0 +1,46 @@
+.grid2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+@each $size in 0, 3, 5, 6, 10, 12, 15, 20, 25, 30, 50, 100, 150 {
+  .gg-#{$size} {
+    grid-gap: #{$size}px;
+  }
+}
+
+.columns {
+  column-count: 3;
+  column-gap: 20px;
+
+  .columns-break {
+    break-inside: avoid;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .grid3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .columns {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid2,
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+  .columns {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
