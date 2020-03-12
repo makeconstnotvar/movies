@@ -13,3 +13,6 @@ const moviesApi = {
   }
 };
 export {moviesApi}
+
+//3b24cb06263974486b5f783f9ad574d7
+//eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjI0Y2IwNjI2Mzk3NDQ4NmI1Zjc4M2Y5YWQ1NzRkNyIsInN1YiI6IjVlNjk1OGMwY2VkYWM0MDAxOTQ2NjdhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lmWhXEYmBGZr5A8o12hyWAWKuyosuImQSkmprd1pMtg
