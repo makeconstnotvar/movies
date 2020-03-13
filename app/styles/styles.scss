@@ -10,10 +10,15 @@
 @import "utils/grid";
 @import "utils/line-height";
 @import "utils/mixins";
+@import "utils/responsive-mixin";
 @import "utils/responsive";
 @import "utils/scroll";
 @import "utils/z-index";
 
 @import "components/pager";
 
+#responsive-page {
+  @import "pages/responsive";
+  @import "utils/responsive";
+}
 

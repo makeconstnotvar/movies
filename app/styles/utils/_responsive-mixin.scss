@@ -1,0 +1,25 @@
+@mixin hide-mixin {
+  display: none !important;
+}
+
+@mixin show-mixin {
+  display: block !important;
+
+  &.inline {
+    display: inline !important;
+  }
+
+  &.inline-block {
+    display: inline-block !important;
+  }
+
+  &.flex-row,
+  &.flex-col {
+    display: flex !important;
+
+    &.inline {
+      display: inline-flex !important;
+    }
+  }
+
+}

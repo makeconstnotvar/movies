@@ -7,6 +7,7 @@ import {TopMoviesPage} from "./pages/TopMoviesPage";
 import {MovieDetailsPage} from "./pages/MovieDetailsPage";
 import {MainPage} from "./pages/MainPage";
 import {MasterLayout} from "./layouts/MasterLayout";
+import {ResponsivePage} from "./pages/ResponsivePage";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
             <MovieDetailsPage path="/movie/:id">Movies</MovieDetailsPage>
             <TopMoviesPage path="/movies">Details</TopMoviesPage>
             <AboutPage path="/about">Details</AboutPage>
+            <ResponsivePage path="/responsive">Responsive</ResponsivePage>
           </Router>
         </MasterLayout>
       </Provider>

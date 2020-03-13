@@ -1,0 +1,33 @@
+.responsive-demo-box {
+  border: 1px solid $grey-300;
+}
+
+@mixin hide-mixin {
+  display: block !important;
+  opacity: 0.5;
+}
+
+@mixin show-mixin {
+  display: block !important;
+  opacity: 1;
+}
+
+.media-box {
+  border-collapse: collapse;
+  border-spacing: 0;
+  min-width: 500px;
+}
+
+.media-row {
+  border: 1px solid $grey-300;
+
+}
+
+.media-title {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.media-size {
+  color: $grey-500;
+}
