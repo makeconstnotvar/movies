@@ -1,0 +1,23 @@
+.header {
+  background-color: #ce4844;
+  color: #fff;
+}
+
+.header-logo {
+  padding: 10px 15px;
+}
+
+.header-link {
+  color: #fff;
+  padding: 10px 15px;
+  display: inline-flex;
+
+  &:hover {
+    background-color: #a94442;
+    transition: background-color 300ms;
+  }
+
+  &.active {
+    background-color: #a94442;
+  }
+}

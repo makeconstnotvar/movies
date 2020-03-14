@@ -15,7 +15,8 @@
 @import "utils/scroll";
 @import "utils/z-index";
 
-@import "components/pager";
+@import "controls/header";
+@import "controls/pager";
 
 #responsive-page {
   @import "pages/responsive";
