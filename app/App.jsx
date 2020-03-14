@@ -3,7 +3,7 @@ import {Router} from "@reach/router";
 import {Provider} from "mobx-react";
 import {store} from "./stores/store";
 import {AboutPage} from "./pages/AboutPage";
-import {TopMoviesPage} from "./pages/TopMoviesPage";
+import {MoviesTopPage} from "./pages/MoviesTopPage";
 import {MovieDetailsPage} from "./pages/MovieDetailsPage";
 import {MainPage} from "./pages/MainPage";
 import {MasterLayout} from "./layouts/MasterLayout";
@@ -17,15 +17,13 @@ class App extends Component {
   render() {
     return (
       <Provider {...store}>
-        <MasterLayout>
-          <Router primary={false}>
-            <MainPage path="/">React app</MainPage>
-            <MovieDetailsPage path="/movie/:id">Movies</MovieDetailsPage>
-            <TopMoviesPage path="/movies">Details</TopMoviesPage>
-            <AboutPage path="/about">Details</AboutPage>
-            <ResponsivePage path="/responsive">Responsive</ResponsivePage>
-          </Router>
-        </MasterLayout>
+        <Router component={MasterLayout}>
+          <MainPage path="/">React app</MainPage>
+          <MovieDetailsPage path="/movie/:id"/>
+          <MoviesTopPage path="/movies/top"/>
+          <AboutPage path="/about"/>
+          <ResponsivePage path="/responsive"/>
+        </Router>
       </Provider>
     );
   }

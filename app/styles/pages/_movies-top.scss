@@ -1,0 +1,14 @@
+.movies-item {
+  background-color: #fff;
+  min-height: 340px;
+  display: flex;
+}
+
+.movie-vote {
+  width: 50px;
+}
+
+.movie-cover {
+  width: 200px;
+  flex-shrink: 0;
+}
