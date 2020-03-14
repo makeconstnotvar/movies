@@ -22,7 +22,7 @@ class TopMoviesPage extends Component {
   render() {
     let {$topMovies} = this.props;
     return (
-      <Fragment>
+      <div className="container">
         <h1>Movies Page</h1>
         <Pager total={$topMovies.count} path='/movies' onPageChange={this.onPageChange}/>
         {
@@ -30,7 +30,7 @@ class TopMoviesPage extends Component {
             {movie.popularity} <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
           </div>)
         }
-      </Fragment>
+      </div>
     );
   }
 }

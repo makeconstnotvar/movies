@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <Provider {...store}>
         <MasterLayout>
-          <Router>
+          <Router primary={false}>
             <MainPage path="/">React app</MainPage>
             <MovieDetailsPage path="/movie/:id">Movies</MovieDetailsPage>
             <TopMoviesPage path="/movies">Details</TopMoviesPage>
@@ -27,7 +27,6 @@ class App extends Component {
           </Router>
         </MasterLayout>
       </Provider>
-
     );
   }
 }

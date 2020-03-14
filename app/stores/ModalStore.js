@@ -8,7 +8,7 @@ class ModalStore {
    * Для этого есть аргументы props.onSuccess и props.onFailed, оба по умолчанию пустая функция;
    */
   @observable isVisible = false;
-  @observable component = () => "";
+  @observable component = () => null;
   @observable props = {};
   @observable className = "";
 

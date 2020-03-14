@@ -18,7 +18,7 @@ class MovieDetailsPage extends Component {
   render() {
     let {$movieDetails} = this.props;
     return (
-      <Fragment>
+      <div className="container">
         <h1>Detail Page</h1>
         {
           $movieDetails.fetchDone &&
@@ -28,7 +28,7 @@ class MovieDetailsPage extends Component {
             <div>{$movieDetails.item.overview}</div>
           </Fragment>
         }
-      </Fragment>
+      </div>
     );
   }
 }

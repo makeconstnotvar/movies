@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 
 class ResponsivePage extends Component {
   el = null;
 
   componentDidMount() {
     this.el = document.getElementById("width");
-    this.el.innerText = window.innerWidth
+    this.el.innerText = window.innerWidth;
     window.addEventListener('resize', this.onWindowResize);
   }
 

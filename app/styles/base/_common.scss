@@ -9,11 +9,21 @@
 
 html {
   overflow-y: scroll;
+  min-height: 100vh;
 }
 
 body {
   font-family: $base-font-family;
   margin: 0;
+  min-height: 100vh;
+  color: $body-color;
+  font-size: 16px;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .font-title, h1, h2, h3, h4, h5, h6 {
@@ -60,8 +70,8 @@ body {
   display: inline-block;
 }
 
-.inline-flex {
-  display: inline-flex;
+.inline {
+  display: inline;
 }
 
 a {
@@ -228,7 +238,6 @@ input, textarea, button, a, div {
 .weight-300 {
   font-weight: 300;
 }
-
 
 .grey-100 {
   color: $grey-100

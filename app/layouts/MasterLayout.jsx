@@ -6,12 +6,11 @@ import {Modal} from "../controls/Modal";
 const MasterLayout = props => (
   <Fragment>
     <Header/>
-    <div>Мастер</div>
-    <div>
+    <main>
       {props.children}
-    </div>
+    </main>
     <Footer/>
-    <Modal/>
+    {/*<Modal/>*/}
   </Fragment>
 );
 

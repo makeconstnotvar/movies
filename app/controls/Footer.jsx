@@ -1,7 +1,9 @@
 import React from "react";
 
 const Footer = props => (
-  <div>Footer</div>
+  <footer>
+    <div className="container">Footer</div>
+  </footer>
 );
 
 export {Footer}
