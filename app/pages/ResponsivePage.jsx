@@ -1,11 +1,29 @@
 import React, {Component, Fragment} from "react";
 
 class ResponsivePage extends Component {
+  el = null;
+
+  componentDidMount() {
+    this.el = document.getElementById("width");
+    this.el.innerText = window.innerWidth
+    window.addEventListener('resize', this.onWindowResize);
+  }
+
+  onWindowResize = e => {
+    this.el.innerText = e.currentTarget.innerWidth
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize)
+  }
+
   render() {
     return (
       <div id="responsive-page" className="container">
         <h1>Responsive Page</h1>
+        <p>width: <span id="width"/>px</p>
         <table className="media-box">
+          <tbody>
           <tr>
             <td className="media-row">
               <div className="media-size fs-12">1440px 1280px</div>
@@ -34,8 +52,8 @@ class ResponsivePage extends Component {
               <div className="media-size fs-12">0px</div>
             </td>
           </tr>
+          </tbody>
         </table>
-
         <h3>Show</h3>
         <div className="responsive-demo-box">
           <div className="show-desktop">show-desktop</div>
