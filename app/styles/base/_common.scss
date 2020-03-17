@@ -10,7 +10,7 @@
 html {
   overflow-y: scroll;
   min-height: 100vh;
-  background-color: #373737;
+  background-color: #121212;
 }
 
 body {
@@ -274,4 +274,8 @@ input, textarea, button, a, div {
 
 .grey-900 {
   color: $grey-900
+}
+
+.hidden {
+  visibility: hidden;
 }

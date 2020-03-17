@@ -57,7 +57,7 @@ class Pager extends Component {
       <div className="pager flex-row flex-wrap unselectable">
         {
           $pager.isPrev &&
-          <a className="page undecorate pointer" onClick={e => this.pageChange(e, 1)}>{"<-"}</a>
+          <a className="page undecorate pointer" onClick={e => this.pageChange(e, 1)}><i className="fas fa-arrow-left"/></a>
         }
         {
           !showAll &&
@@ -72,7 +72,7 @@ class Pager extends Component {
         }
         {
           $pager.isNext &&
-          <a className="page undecorate pointer" onClick={e => this.pageChange(e, $pager.currentPage + 1)}>{"->"}</a>
+          <a className="page undecorate pointer" onClick={e => this.pageChange(e, $pager.currentPage + 1)}><i className="fas fa-arrow-right"/></a>
         }
       </div>
     )

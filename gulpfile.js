@@ -6,7 +6,7 @@ let gulp = require('gulp'),
   hash = require('gulp-hash'),
   del = require('del');
 
-let styles = 'app/styles/styles.scss',
+let styles = ['app/styles/styles.scss', 'app/styles/fonts.scss'],
   destination = 'build';
 
 gulp.task('styles-delete', function () {
@@ -30,7 +30,7 @@ gulp.task('styles-debug', function () {
   return gulp.src(styles)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('styles.css'))
+    //.pipe(concat('styles.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(destination));
 });

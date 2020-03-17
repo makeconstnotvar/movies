@@ -10,7 +10,7 @@ const MasterLayout = props => (
       {props.children}
     </main>
     <Footer/>
-    {/*<Modal/>*/}
+    <Modal/>
   </Fragment>
 );
 

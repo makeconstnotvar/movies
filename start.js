@@ -10,6 +10,7 @@ app.use(helmet());
 app.use(compression());
 
 app.use('/build', express.static(path.join(__dirname, 'build')));
+app.use('/fonts', express.static(path.join(__dirname, 'fonts')));
 
 app.use('/', (req, res, next) => {
   res.sendFile('index.html', {root: __dirname})

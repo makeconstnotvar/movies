@@ -1,23 +1,27 @@
 .pager {
   .page {
-    border: 1px solid $grey-400;
     width: 40px;
     height: 40px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    color: $white-color;
+    transition: background-color 200ms;
 
     &:hover {
-      background-color: $grey-200;
+      background-color: $white-color;
+      transition: background-color 200ms;
+      color: $body-color;
     }
 
     &.active {
-      background-color: $grey-200;
+      background-color: $white-color;
+      color: $body-color;
     }
   }
 
-  .page + page {
-    margin-right: 4px;
+  .page + .page {
+    margin-left: 10px;
   }
 }

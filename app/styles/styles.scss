@@ -4,6 +4,7 @@
 @import "base/roboto";
 @import "base/awesome";
 
+@import "utils/animation";
 @import "utils/flex";
 @import "utils/font-size";
 @import "utils/gaps";
@@ -15,9 +16,10 @@
 @import "utils/scroll";
 @import "utils/z-index";
 
-@import "controls/header";
 @import "controls/footer";
+@import "controls/header";
 @import "controls/pager";
+@import "controls/progress";
 
 @import "pages/movies-top";
 
