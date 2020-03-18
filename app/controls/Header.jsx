@@ -1,6 +1,5 @@
-import React, {Fragment} from "react";
-import {Link} from "@reach/router";
-import {AboutPage} from "../pages/AboutPage";
+import {Link} from "inferno-router";
+
 
 const Header = props => (
   <header className="header">

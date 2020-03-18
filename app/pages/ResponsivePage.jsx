@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import {Component} from "inferno";
 
 class ResponsivePage extends Component {
   el = null;
@@ -17,7 +17,7 @@ class ResponsivePage extends Component {
     window.removeEventListener('resize', this.onWindowResize)
   }
 
-  render() {
+  render(nextProps, nextState, nextContext) {
     return (
       <div id="responsive-page" className="container">
         <h1>Responsive Page</h1>

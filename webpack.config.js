@@ -24,9 +24,11 @@ module.exports = {
           options: {
             presets: [
               //["@babel/preset-env",{"targets": {"chrome": "80"}}],
-              "@babel/preset-react"
+              //"@babel/preset-react"
             ],
             plugins: [
+              ["babel-plugin-inferno", {"imports": true}],
+              ["babel-plugin-syntax-jsx"],
               ["@babel/plugin-proposal-decorators", {legacy: true}],
               ["@babel/plugin-proposal-class-properties", {loose: true}],
             ]
