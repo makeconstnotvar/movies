@@ -1,7 +1,7 @@
 import {Component} from "inferno";
 import {BrowserRouter, Route} from "inferno-router";
 import {Provider} from "inferno-mobx";
-import {store} from "stores/store";
+import {getStores} from "stores/store";
 import {AboutPage} from "pages/AboutPage";
 import {MoviesTopPage} from "pages/MoviesTopPage";
 import {MovieDetailsPage} from "pages/MovieDetailsPage";
@@ -14,9 +14,9 @@ class App extends Component {
     console.log(this.props)
   }
 
-  render(nextProps, nextState, nextContext) {
+  render(props, state, context) {
     return (
-      <Provider {...store}>
+      <Provider {...getStores()}>
         <BrowserRouter>
           <MasterLayout>
             <Route exact path="/" component={MainPage}/>

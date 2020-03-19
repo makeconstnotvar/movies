@@ -3,6 +3,12 @@ import last from "lodash/last";
 import {action, computed, observable} from "mobx";
 
 class PagerStore {
+  ssrLocation = null;
+
+  constructor({state}) {
+    if (state)
+      Object.assign(this, state);
+  }
 
   @observable currentPage = 1;
   @observable pageSize = 20;

@@ -7,6 +7,13 @@ class ModalStore {
    * Есть необходимость после заверешения работы модала иногда вызвать callback, например открыть другой модал.
    * Для этого есть аргументы props.onSuccess и props.onFailed, оба по умолчанию пустая функция;
    */
+  ssrLocation = null;
+
+  constructor({state}) {
+    if (state)
+      Object.assign(this, state);
+  }
+
   @observable isVisible = false;
   @observable component = () => null;
   @observable props = {};
