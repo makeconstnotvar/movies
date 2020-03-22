@@ -1,3 +1,5 @@
+function getTemplate(props = {}) {
+  return `
 <!DOCTYPE html>
 <html>
 
@@ -11,9 +13,13 @@
 </head>
 
 <body>
-<div id="root">Загрузка...</div>
+<div id="root">${props.html ? props.html : 'Загрузка...'}</div>
 <script src="/build/script.js"></script>
 
 </body>
 
 </html>
+`;
+}
+
+module.exports = getTemplate;

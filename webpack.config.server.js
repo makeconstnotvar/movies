@@ -3,16 +3,16 @@ let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 module.exports = {
   mode: "development",
-  devtool: "source-map",
-  plugins: [
-    //new BundleAnalyzerPlugin()
-  ],
+  devtool: false,
+  target: "node",
   entry: {
-    script: "./app/index.js"
+    server: "./app/server.js"
   },
   output: {
+    library: 'MyLibrary',
+    libraryTarget: 'commonjs',
     path: path.resolve(__dirname, "build"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
   module: {
     rules: [
@@ -20,19 +20,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: "babel-loader"
-        /*use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              //["@babel/preset-env",{"targets": {"chrome": "80"}}],
-              "@babel/preset-react"
-            ],
-            plugins: [
-              ["@babel/plugin-proposal-decorators", {legacy: true}],
-              ["@babel/plugin-proposal-class-properties", {loose: true}],
-            ]
-          }
-        }*/
       }
     ]
   },
