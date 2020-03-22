@@ -1,6 +1,7 @@
-import {Component} from "inferno";
-import {BrowserRouter, Route} from "inferno-router";
-import {Provider} from "inferno-mobx";
+import {Component} from "react";
+import React from 'react';
+import {Router} from "@reach/router";
+import {Provider} from "mobx-react";
 import {getStores} from "stores/store";
 import {AboutPage} from "pages/AboutPage";
 import {MoviesTopPage} from "pages/MoviesTopPage";
@@ -14,18 +15,16 @@ class App extends Component {
     console.log(this.props)
   }
 
-  render(props, state, context) {
+  render() {
     return (
       <Provider {...getStores()}>
-        <BrowserRouter>
-          <MasterLayout>
-            <Route exact path="/" component={MainPage}/>
-            <Route path="/movie/:id" component={MovieDetailsPage}/>
-            <Route path="/movies/top" component={MoviesTopPage}/>
-            <Route path="/about" component={AboutPage}/>
-            <Route path="/responsive" component={ResponsivePage}/>
-          </MasterLayout>
-        </BrowserRouter>
+        <Router component={MasterLayout} primary={false}>
+          <MainPage exact path="/"/>
+          <MovieDetailsPage path="/movie/:id"/>
+          <MoviesTopPage path="/movies/top"/>
+          <AboutPage path="/about"/>
+          <ResponsivePage path="/responsive"/>
+        </Router>
       </Provider>
     );
   }

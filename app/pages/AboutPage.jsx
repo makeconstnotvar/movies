@@ -1,7 +1,8 @@
-import {Component} from "inferno";
+import {Component} from "react";
+import React from 'react';
 
 class AboutPage extends Component {
-  render(nextProps, nextState, nextContext) {
+  render() {
     return (
       <div className="container">
         <h1>About Page</h1>

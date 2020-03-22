@@ -1,5 +1,5 @@
-import {Link} from "inferno-router";
-
+import {Link} from "@reach/router";
+import React from 'react';
 
 const Header = props => (
   <header className="header">

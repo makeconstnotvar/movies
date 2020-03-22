@@ -3,7 +3,7 @@ import {ModalStore} from "./ModalStore";
 import {PagerStore} from "./PagerStore";
 import {TopMoviesStore} from "./TopMoviesStore";
 
-function getStores(initState) {
+function getStores(initState = {}) {
   return {
     $modal: new ModalStore({state: initState.$modal}),
     $pager: new PagerStore({state: initState.$pager}),

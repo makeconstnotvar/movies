@@ -1,4 +1,5 @@
-import {Fragment} from "inferno";
+import {Fragment} from "react";
+import React from 'react';
 import {Header} from "../controls/Header";
 import {Footer} from "../controls/Footer";
 import {Modal} from "../controls/Modal";

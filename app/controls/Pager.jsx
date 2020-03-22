@@ -1,6 +1,7 @@
-import {inject, observer} from "inferno-mobx";
-import {Component, Fragment} from 'inferno';
-import {Link} from "inferno-router";
+import {inject, observer} from "mobx-react";
+import {Component, Fragment} from 'react';
+import React from 'react';
+import {Link} from "@reach/router";
 import qs from 'qs';
 
 @inject("$pager")
@@ -47,9 +48,9 @@ class Pager extends Component {
     this.props.onPageChange(0, showAll)
   };
 
-  render(nextProps, nextState, nextContext) {
-    let {$pager, path = ""} = nextProps;
-    let {showAll} = nextState;
+  render() {
+    let {$pager, path = ""} = this.props;
+    let {showAll} = this.state;
 
     if (!$pager.showPager)
       return null;

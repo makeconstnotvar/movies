@@ -1,6 +1,7 @@
-import {Component} from "inferno";
-import {inject, observer} from "inferno-mobx";
-import {Link} from "inferno-router";
+import {Component} from "react";
+import React from 'react';
+import {inject, observer} from "mobx-react";
+import {Link} from "@reach/router";
 import {Pager} from "controls/Pager";
 import moment from "moment";
 import {Progress} from "../controls/Progress";
@@ -23,8 +24,8 @@ class MoviesTopPage extends Component {
   };
 
 //react-reveal
-  render(nextProps, nextState, nextContext) {
-    let {$topMovies} = nextProps;
+  render() {
+    let {$topMovies} = this.props;
     return (
       <div className="container">
         <h1 className="white">Лучшие фильмы <Progress isProgress={$topMovies.fetchProgress}/></h1>
@@ -46,9 +47,9 @@ class Item extends Component {
   };
 
 
-  render(nextProps, nextState, nextContext) {
-    let {movie} = nextProps;
-    let {imgReady} = nextState;
+  render() {
+    let {movie} = this.props;
+    let {imgReady} = this.state;
     return (
       <Link className="movies-item mb-50 flex-col" key={movie.id} to={`/movie/${movie.id}`}>
         <img onLoad={() => this.setState({imgReady: true})} className={`movie-cover mb-10 fade ${imgReady ? 'in' : ''}`} src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt=""/>

@@ -20,7 +20,7 @@ app.get('/test', (req, res) => {
   res.send(getTemplate({html}));
 });
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   let ua = req.headers['user-agent'];
   if (/bot|google|yandex|mail\.ru|bing|embedly|guzzlehttp|validator|vk\.com|facebook|slurp|tumblr|undefined|seopult|mailru|mrpc|ok\.ru|googlebot|bingbot|baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|quora link preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|W3C_Validator|whatsapp/i.test(ua)) {
     let html = MyLibrary.render();

@@ -1,5 +1,6 @@
-import {Component, Fragment} from "inferno";
-import {inject, observer} from "inferno-mobx";
+import {Component, Fragment} from "react";
+import React from 'react';
+import {inject, observer} from "mobx-react";
 
 @inject('$movieDetails')
 @observer
@@ -15,8 +16,8 @@ class MovieDetailsPage extends Component {
     $movieDetails.fetchItem(id).then(() => console.log($movieDetails.item));
   };
 
-  render(nextProps, nextState, nextContext) {
-    let {$movieDetails} = nextProps;
+  render() {
+    let {$movieDetails} = this.props;
     return (
       <div className="container">
         <h1>Detail Page</h1>
