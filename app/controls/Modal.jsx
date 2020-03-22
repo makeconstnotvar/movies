@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import {inject, observer} from "mobx-react";
+import {Component} from 'inferno';
+import {inject, observer} from "inferno-mobx";
 
 @inject("$modal")
 @observer
@@ -9,8 +9,8 @@ class Modal extends Component {
       this.props.$modal.hide()
   }
 
-  render() {
-    let {$modal} = this.props;
+  render(nextProps, nextState, nextContext) {
+    let {$modal} = nextProps;
     let Component = $modal.component;
     if (!$modal.isVisible)
       return null;

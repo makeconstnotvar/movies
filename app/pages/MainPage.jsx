@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from "react";
+import {Component} from "inferno";
 
 class MainPage extends Component {
-  render() {
+  render(nextProps, nextState, nextContext) {
     return (
       <div className="container">
 

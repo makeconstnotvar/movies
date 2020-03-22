@@ -2,6 +2,12 @@ import {action, computed, observable} from "mobx";
 import {authApi} from "../api/auth";
 
 class AuthStore {
+  ssrLocation = null;
+
+  constructor({state}) {
+    if (state)
+      Object.assign(this, state);
+  }
 
   @observable token = {};
 

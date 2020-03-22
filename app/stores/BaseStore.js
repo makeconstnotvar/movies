@@ -3,10 +3,14 @@ import {action, computed, observable} from "mobx";
 //import {getError} from "mobx/errors";
 
 class BaseStore {
-  constructor(options = {}) {
-    this.$root = options.$root;
-    this.fetchMethod = options.fetchMethod || this.fetchMethod;
-    this.saveMethod = options.saveMethod || this.saveMethod;
+  ssrLocation = null;
+
+  constructor({state, fetchMethod, saveMethod/*, $root*/} = {}) {
+    if (state)
+      Object.assign(this, state);
+    //this.$root = $root;
+    this.fetchMethod = fetchMethod || this.fetchMethod;
+    this.saveMethod = saveMethod || this.saveMethod;
   }
 
   fetchMethod = function () {
