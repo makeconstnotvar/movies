@@ -1,7 +1,7 @@
 import {Component} from "react";
 import React from 'react';
 import {inject, observer} from "mobx-react";
-import {Link} from "@reach/router";
+import {Link} from "react-router-dom";
 import {Pager} from "controls/Pager";
 import moment from "moment";
 import {Progress} from "../controls/Progress";

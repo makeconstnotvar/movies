@@ -5,14 +5,15 @@ import {inject, observer} from "mobx-react";
 @inject('$movieDetails')
 @observer
 class MovieDetailsPage extends Component {
+
   componentDidMount = () => {
     let {$movieDetails} = this.props;
     $movieDetails.fullReset();
-    this.fetch(this.props.id);
+    MovieDetailsPage.fetch(this.props);
   };
 
-  fetch = (id) => {
-    let {$movieDetails} = this.props;
+  static fetch = (props) => {
+    let {$movieDetails, id} = props;
     $movieDetails.fetchItem(id).then(() => console.log($movieDetails.item));
   };
 
@@ -25,7 +26,7 @@ class MovieDetailsPage extends Component {
           $movieDetails.fetchDone &&
           <Fragment>
             <h3>{$movieDetails.item.title}</h3>
-            <img style={{maxWidth: '100%'}} src={`https://image.tmdb.org/t/p/w500/${$movieDetails.item.poster_path}`} alt={$movieDetails.item.title}/>
+            <img style={{maxWidth: '100%'}} src={`https://image.tmdb.org/t/p/w500${$movieDetails.item.poster_path}`} alt={$movieDetails.item.title}/>
             <div>{$movieDetails.item.overview}</div>
           </Fragment>
         }

@@ -1,10 +1,12 @@
 let path = require("path");
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+let externals = require('webpack-node-externals');
 
 module.exports = {
   mode: "development",
   devtool: false,
   target: "node",
+  externals: [externals()],
   entry: {
     server: "./app/server.js"
   },

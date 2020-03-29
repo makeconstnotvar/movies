@@ -8,7 +8,7 @@ module.exports = {
     //new BundleAnalyzerPlugin()
   ],
   entry: {
-    script: "./app/index.js"
+    script: "./app/client.js"
   },
   output: {
     path: path.resolve(__dirname, "build"),
