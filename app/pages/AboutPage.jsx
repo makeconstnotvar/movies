@@ -5,7 +5,7 @@ class AboutPage extends Component {
   render() {
     return (
       <div className="container">
-        <h1>About Page</h1>
+        <h1 className="white">About Page</h1>
       </div>
     );
   }

@@ -21,7 +21,7 @@ class MovieDetailsPage extends Component {
     let {$movieDetails} = this.props;
     return (
       <div className="container">
-        <h1>Detail Page</h1>
+        <h1 className="white">Detail Page</h1>
         {
           $movieDetails.fetchDone &&
           <Fragment>

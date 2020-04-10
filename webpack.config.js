@@ -20,21 +20,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: "babel-loader"
-        /*use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              //["@babel/preset-env",{"targets": {"chrome": "80"}}],
-              //"@babel/preset-react"
-            ],
-            plugins: [
-              ["babel-plugin-inferno", {"imports": true}],
-              ["babel-plugin-syntax-jsx"],
-              ["@babel/plugin-proposal-decorators", {legacy: true}],
-              ["@babel/plugin-proposal-class-properties", {loose: true}],
-            ]
-          }
-        }*/
       }
     ]
   },

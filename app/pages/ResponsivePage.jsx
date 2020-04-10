@@ -21,7 +21,7 @@ class ResponsivePage extends Component {
   render() {
     return (
       <div id="responsive-page" className="container">
-        <h1>Responsive Page</h1>
+        <h1 className="white">Responsive Page</h1>
         <p>width: <span id="width"/>px</p>
         <table className="media-box">
           <tbody>

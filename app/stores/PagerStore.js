@@ -52,7 +52,7 @@ class PagerStore {
      * selectedValue - значение для запроса
      * selectedValue = currentPage - 1
      */
-    this.currentPage = page ? page : 1;
+    this.currentPage = page ? +page : 1;
   }
 
   @computed get maxPagesCount() {

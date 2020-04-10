@@ -1,6 +1,6 @@
 import {Component} from "react";
 import React from 'react';
-import {BrowserRouter, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {routes, RoutesMap} from './routes';
 import {MasterLayout} from "layouts/MasterLayout";
 
@@ -15,7 +15,7 @@ class Routes extends Component {
         <MasterLayout>
           <Switch>
             {
-              routes.map((route, i) => <RoutesMap {...route}/>)
+              routes.map((route, i) => <RoutesMap key={i} {...route}/>)
             }
           </Switch>
         </MasterLayout>

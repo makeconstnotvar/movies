@@ -6,7 +6,7 @@ class MainPage extends Component {
     return (
       <div className="container">
 
-        <h1>Main Page</h1>
+        <h1 className="white">Main Page</h1>
       </div>
     );
   }

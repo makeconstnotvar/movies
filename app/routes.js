@@ -30,6 +30,6 @@ const routes = [
   }
 ];
 
-const RoutesMap = route => <Route path={route.path} exact={route.exact} component={route.component} routes={route.routes}/>;
+const RoutesMap = (route, i) => <Route key={i} path={route.path} exact={route.exact} component={route.component} routes={route.routes}/>;
 
 export {routes, RoutesMap}

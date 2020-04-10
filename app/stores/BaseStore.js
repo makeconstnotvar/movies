@@ -1,14 +1,11 @@
 import {action, computed, observable} from "mobx";
 
-//import {getError} from "mobx/errors";
-
 class BaseStore {
   ssrLocation = null;
 
   constructor({state, fetchMethod, saveMethod/*, $root*/} = {}) {
     if (state)
       Object.assign(this, state);
-    //this.$root = $root;
     this.fetchMethod = fetchMethod || this.fetchMethod;
     this.saveMethod = saveMethod || this.saveMethod;
   }
@@ -28,106 +25,22 @@ class BaseStore {
   saveMethod = function () {
     throw 'Не задан saveMethod'
   };
-  itemsCached = [];
-  selectedCached = null;
 
   @observable fetchProgress = false;
   @observable fetchError = false;
   @observable fetchErrorText = "";
   @observable fetchDone = false;
   @observable fetchFirst = false;
+  @observable fetchQuery = null;
 
   @observable saveProgress = false;
   @observable saveError = false;
   @observable saveErrorText = "";
   @observable saveDone = false;
   @observable items = [];
-  @observable count = 0;
-  @observable noResults = false;
-  @observable selected = null;
-
   @observable item = {};
-
-  @action selectedToCache() {
-    this.selectedCached = this.selected;
-    this.selected = null;
-  }
-
-  @action selectedFromCache() {
-    if (this.selectedCached)
-      this.selected = this.selectedCached;
-  }
-
-  @action reset() {
-    this.selected = null;
-    this.selectedCached = null;
-    this.fetchErrorText = "";
-    this.saveErrorText = "";
-  }
-
-  @action fullReset() {
-    this.fetchProgress = false;
-    this.fetchError = false;
-    this.selected = null;
-    this.selectedCached = null;
-    this.fetchErrorText = "";
-    this.saveErrorText = "";
-    this.fetchDone = false;
-    this.items = [];
-    this.item = {};
-    this.count = 0;
-    this.noResults = false;
-  }
-
-  @action setSelected(item) {
-    this.selected = item;
-    this.selectedCached = null;
-  }
-
-  @computed get noSelected() {
-    return this.selected == null;
-  }
-
-  @action itemsToCache(params) {
-    return this.fetchItems(params, true);
-  }
-
-  @action itemsFromCache() {
-    this.items = this.itemsCached;
-    this.selectedFromCache();
-  }
-
-  @action fetchItems(params, needCache) {
-    this.fetchProgress = true;
-    this.fetchError = false;
-    this.fetchErrorText = "";
-    this.fetchDone = false;
-    return this.fetchMethod(params)
-      .catch(e => {
-        if (e.message !== "user cancel") {
-          this.fetchError = true;
-          if (e.response && e.response.data) {
-            let {code = "", error = ""} = e.response.data;
-            //this.fetchErrorText = getError(code, error);
-          }
-          this.fetchFailed(e);
-          console.error(`Ошибка в ${this.fetchMethod.name}`, e);
-        }
-      })
-      .then(action((response = {}) => {
-        this.items = response.results || [];
-        this.count = response.total_results || 0;
-        this.fetchProgress = false;
-        this.fetchDone = true;
-        this.fetchSuccess(response);
-        if (needCache) {
-          this.itemsCached = this.items;
-          this.noResults = this.items.length === 0;
-          this.fetchFirst = true;
-          this.firstFetchSuccess(response)
-        }
-      }));
-  }
+  @observable total = 0;
+  @observable noResults = false;
 
   @computed get noItem() {
     return this.fetchDone && Object.entries(this.item).length === 0;
@@ -137,6 +50,59 @@ class BaseStore {
     return this.fetchDone && this.items.length === 0;
   }
 
+  @action reset() {
+    this.fetchErrorText = "";
+    this.saveErrorText = "";
+  }
+
+  @action fullReset() {
+    this.fetchProgress = false;
+    this.fetchError = false;
+    this.fetchErrorText = "";
+    this.saveErrorText = "";
+    this.fetchDone = false;
+    this.items = [];
+    this.item = {};
+    this.total = 0;
+    this.noResults = false;
+  }
+
+  @action setState(state) {
+    if (isObject(state))
+      for (let key in state) {
+        this[key] = state[key];
+      }
+  }
+
+  @action fetchItems(params, isFirst) {
+    this.fetchProgress = true;
+    this.fetchError = false;
+    this.fetchErrorText = "";
+    this.fetchDone = false;
+    return this.fetchMethod(params)
+      .catch(action(e => {
+        if (e.message !== "user cancel") {
+          this.fetchError = true;
+          //this.fetchErrorText = getError(e);
+          this.fetchFailed(e);
+          console.error(`Ошибка в ${this.fetchMethod.name}`, e);
+        }
+      }))
+      .then(action((response = {}) => {
+        this.items = response.results || [];
+        this.total = response.total_results || 0;
+        this.fetchProgress = false;
+        this.fetchDone = true;
+        this.fetchSuccess(response);
+        if (isFirst) {
+          this.noResults = this.items.length === 0;
+          this.fetchFirst = true;
+          this.firstFetchSuccess(response)
+        }
+      }));
+  }
+
+
   @action fetchItem(params) {
     this.fetchProgress = true;
     this.fetchError = false;
@@ -145,17 +111,13 @@ class BaseStore {
     return this.fetchMethod(params)
       .catch(e => {
         this.fetchError = true;
-        if (e.response && e.response.data) {
-          let {code = "", error = ""} = e.response.data;
-          //this.fetchErrorText = getError(code, error);
-        }
+        //this.fetchErrorText = getError(e);
         console.error(`Ошибка в ${this.fetchMethod.name}`, e);
       })
       .then(action(item => {
         this.item = item || {};
         this.fetchProgress = false;
         this.fetchDone = true;
-
       }));
   }
 
@@ -165,14 +127,11 @@ class BaseStore {
     this.saveDone = false;
     this.saveErrorText = "";
     return this.saveMethod(params)
-      .catch(e => {
+      .catch(action(e => {
         this.saveError = true;
-        if (e.response && e.response.data) {
-          let {code = "", error = ""} = e.response.data;
-          //this.saveErrorText = getError(code, error);
-        }
+        //this.saveErrorText = getError(e);
         console.error(this.saveMethod.name, e);
-      })
+      }))
       .then(action(resp => {
         this.saveProgress = false;
         this.saveDone = true;
