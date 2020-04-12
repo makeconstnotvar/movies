@@ -12,8 +12,9 @@ import isEqual from 'lodash/isEqual';
 class MoviesTopPage extends Component {
   componentDidMount() {
     //this.props.history.replace(location.pathname + '?a=1&b=2')
+    let newQuery = qs.parse(this.props.location.search, {ignoreQueryPrefix: true});
+    this.props.$pager.setCurrentPage(newQuery.page)
     this.fetch();
-
   };
 
   componentDidUpdate(prevProps) {
